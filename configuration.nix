@@ -70,12 +70,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.fish;
   users.users.maycommit = {
     isNormalUser = true;
     home = "/home/maycommit";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -97,12 +99,12 @@
     spotify
     gnupg
     pinentry-curses
-    keybase
-    keybase-gui
-    kbfs
     tmux
     curl
     openssl
+    awscli2
+    docker-compose
+    go
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

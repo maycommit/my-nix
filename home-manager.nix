@@ -64,8 +64,7 @@ in
         userName  = "Maycon Pacheco";
         userEmail = "mayconjrpacheco@gmail.com";
 	      signing = {
-          key= "0xDF5C8BB1F5FD8B08";
-          gpgPath = "${pkgs.gnupg}/bin/gpg2";
+          key= "46944C7569A20AA4";
         };
       };
       vscode = {
@@ -76,9 +75,23 @@ in
           esbenp.prettier-vscode
           golang.Go
         ];
+        userSettings = {
+          "editor.tabSize" = 2;
+          "editor.insertSpaces" = true;
+          "window.zoomLevel" = true;
+        };
       };
       gpg = {
         enable = true;
+      };
+    };
+    services = {
+      gpg-agent = {
+        enable = true;
+        extraConfig = ''
+          allow-loopback-pinentry
+          default-cache-ttl 7200
+        '';
       };
     };
   };
